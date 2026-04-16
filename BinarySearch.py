@@ -27,7 +27,26 @@ def binarySearch(nums, target):
     return -1
 
 
+def binarySearchRecursive(nums, target, left, right):
+    # By recursion
+
+    if left > right:
+        return -1
+
+    mid = (left + right) // 2
+
+    if nums[mid] == target:
+        return mid
+    else:
+        if nums[mid] < target:
+            return binarySearchRecursive(nums, target, mid + 1, right)
+        else:
+            return binarySearchRecursive(nums, target, mid, right - 1)
+
+
 nums = [-1, 0, 3, 5, 9, 12]
 target = 9
+left = 0
+right = len(nums) - 1
 
-print(binarySearch(nums, target))
+print(binarySearchRecursive(nums, target, left, right))
