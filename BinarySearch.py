@@ -41,7 +41,7 @@ def binarySearchRecursive(nums, target, left, right):
         if nums[mid] < target:
             return binarySearchRecursive(nums, target, mid + 1, right)
         else:
-            return binarySearchRecursive(nums, target, mid, right - 1)
+            return binarySearchRecursive(nums, target, left, mid - 1)
 
 
 nums = [-1, 0, 3, 5, 9, 12]
@@ -50,3 +50,26 @@ left = 0
 right = len(nums) - 1
 
 print(binarySearchRecursive(nums, target, left, right))
+
+
+def binarySearchRecursivePractice(array, target, left, right):
+    if left > right:
+        return -1  # en este caso no se encontró el elemento
+
+    # Partimos el arreglo por la mitad
+    mid = (left + right) // 2
+
+    # Si el elemento que queremos es el de la mitad, terminamos
+    if array[mid] == target:
+        return mid
+    else:
+        # De lo contrario se busca en otras regiones
+        # Si el elemento de la mitad es menor al target, entonces buscamos
+        # a la derecha
+        if array[mid] < target:
+            return binarySearchRecursivePractice(array, target, mid + 1, right)
+        else:  # array[mid] > target
+            return binarySearchRecursivePractice(array, target, left, mid - 1)
+
+
+print(binarySearchRecursivePractice(nums, target, left, right))
