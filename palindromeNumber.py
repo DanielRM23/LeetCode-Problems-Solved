@@ -32,5 +32,32 @@ def isPalindrome2(x: int):
     return True
 
 
-x = 1000021
+x = 100001
 print(isPalindrome2(x))
+
+
+def isPalindrome3(n: int):
+    if n < 0:
+        return False
+
+    actual = n  # Store a copy of the original number
+    reversed_num = (
+        0  # In this variable we'll build a new number, readed in reverse order
+    )
+
+    while n > 0:
+        # With this operation we take the last digit of a number
+        # For example 127%10 = 7
+        digit = n % 10
+        # With this operation we move one position to the left, adding a zero
+        reversed_num = reversed_num * 10 + digit
+        # By doing this operation, we drop the last digit
+        n = n // 10
+
+    if reversed_num == actual:
+        return True
+    else:
+        return False
+
+
+print("Rsultado de la función 3:", isPalindrome3(x))
